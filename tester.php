@@ -1,3 +1,7 @@
+<?php 
+session_start();
+
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -18,80 +22,70 @@
 <ul id="menu-topo">
 <ul>
 <li><a href="index.php"><i class="icon-home"></i>Accueil</a></li>
-<li><a href="tester.php">Réviser</a></li>
-<li><a href="reviser.php"><i class="icon-thumbs-up-alt"></i>Tester</a></li>
-<li><a href="cours.php"><i class="icon-gear"></i>Cours</a></li>
+<li><a href="reviser.php">Réviser</a></li>
+<li><a href="tester.php">Tester</a></li>
+
 
 </ul>
 </ul>
 
 <div id="post-body">
-<h1><span>Réviser</span> les tables de multiplications</h1>
+<h1><span>Tester </span>vos connaissances</h1>
  <br>
-<form action="tester.php" method="post">
+<form action="tester.php" method="get">
 
+<p>Sélectionner une table</p>	
+<select name="select" id ="select" >
+    <?php	
+  
+    $_GET['nbr']=$_SESSION['form']['nbr'];
+    for ($i=1;$i<=10;$i++)	
+        {
+        if ($i==$_GET['nbr']) echo '<option value="'.$i.'" selected="selected">'.$i.'</option>';
+        else echo '<option value="'.$i.'">'.$i.'</option>';
+        }
+      
+
+    ?>
+</select>
+<input name="Envoyer" type="submit" value="confirmer" >
+</form>
+<form action="tester.php" method="post" >
 <?php
+ 
+if(isset($_GET['select'])){
+   $random=rand(1,10);
+    $select = $_GET['select'];
+    $result=$random*$select;
+    echo $select."*".$random."="."?";
+    echo "<br>";
+    echo "<input type=\"number\" name=\"valeur\" value=\"\" >"; 
+    echo"<br>";
+    echo "<input name=\"Envoyer\" type=\"submit\"  onclick=\"test();>\">";
+    
+}
+    ?> 
+</form>
+<?php
+function test(){
+  
+    if(isset($_POST['valeur'])){
+        //int pour convertir en nombre
+    if((int)$_POST['valeur']===$result){
 
-for($i=1; $i<=10; $i++){
-    echo"<input type=\"checkbox\" name=\"choix[]\" value=\"$i\">$i ";
+      echo"bravo!";
+    }
+   } 
 }
 ?>
-<br>
-<br>
-<br>
-
-<input type="submit" value="Afficher tables de multiplications" >
 
 
-</form>
- 
-<?php
-
-
-if (isset($_POST['choix'])) {
-
-    var_dump($_POST['choix']);
-
-
-
-    foreach ($_POST['choix'] as $key => $value){
-           
-
-      
-     for($i=1; $i<=10; $i++)
-     {
-         $result = $value*$i;
-         echo'<br>';
-         echo"$value*$i = $result<br>";
-     
-     }
-
-     echo"<br>";
-    }
-}
-  else {
-    echo 'La checkbox n\'est pas cochée';
-  }
-/*  
-$tab1=[1,2,3,4,5,6,7,8,9,10];
-for($i=1;$i<=10; $i++){
-    echo"<tr>";
-    for($j=1;$j<=10; $j++){
-     echo("<td>".$i*$j."</td>");
-    }
-    echo"</tr>";
-
-}
-*/
-?></p>
+</p>
 </div>
  <!-- Début footer -->
 <div class="footer">
   <p>Formation ASC 2019- 2020</p>
-</div>
-        
+</div>     
  <!-- Fin footer -->
- <?php
- ?>   
 </body>
 </html>

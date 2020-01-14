@@ -18,18 +18,15 @@
 <!-- Début Menu navigation -->
 <ul id="menu-topo">
 <ul>
-<li><a href="index.php"><i class="icon-home"></i>Accueil</a></li>
-<li><a href="tester.php">Réviser</a></li>
-<li><a href="reviser.php"><i class="icon-thumbs-up-alt"></i>Tester</a></li>
-<li><a href="cours.php"><i class="icon-gear"></i>Cours</a></li>
+<li><a href="index.php">Accueil</a></li>
+<li><a href="reviser.php">Réviser</a></li>
+<li><a href="tester.php">Tester</a></li>
 
 </ul>
 </ul>
 <!-- Main page -->
 <div id="post-body">
 <h1><span>Projet en PHP</span> Utiliser uniquement CSS et HTML</h1>
-  
-  <img src="../" />
   
   <p><b>L'objectif de ce projet</b> et de   créer un site avec du PHP qui permet aux utilisateurs de réviser leurs tables de multiplication.
   Une page index permettra de se rendre sur 2 pages différentes : une pour voir les tables et une pour tester ses connaissances.</p> 
